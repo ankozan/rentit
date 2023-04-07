@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Document(collection = "tools")
@@ -23,8 +24,9 @@ public class Tool {
     private String description;
     private double rental_price;
     private boolean available;
+    private String image;
 
     @Field("rental_history")
-    private List<RentalHistory> rental_history;
+    private List<Object> rental_history;
 
 }
