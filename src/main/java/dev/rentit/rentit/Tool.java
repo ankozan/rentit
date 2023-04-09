@@ -25,8 +25,11 @@ public class Tool {
     private double rental_price;
     private boolean available;
     private String image;
-
+    private String toolId;
     @Field("rental_history")
     private List<Object> rental_history;
+    private String rating;
+    private String email;
+    private String location;
 
 }

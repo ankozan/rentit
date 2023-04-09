@@ -10,6 +10,5 @@ import java.util.Optional;
 
 @Repository
 public interface ToolRepository  extends MongoRepository<Tool, ObjectId> {
-    @Query("UPDATE tools t SET t.available = :available WHERE t.id = :id")
-    int updateAvailabilityById(@Param("id") ObjectId id, @Param("available") Integer available);
+    Optional<Tool> findByToolId(String toolId);
 }

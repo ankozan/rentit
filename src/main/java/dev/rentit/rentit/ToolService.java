@@ -22,8 +22,8 @@ public class ToolService {
         return toolRepository.findById(id);
     }
 
-    public void updateAvailabilityToFalse(ObjectId id) {
-        Optional<Tool> optionalTool = toolRepository.findById(id);
+    public void updateAvailabilityToFalse(String toolId) {
+        Optional<Tool> optionalTool = toolRepository.findByToolId(toolId);
         if (optionalTool.isPresent()) {
             Tool tool = optionalTool.get();
             tool.setAvailable(false);

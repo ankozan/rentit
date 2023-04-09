@@ -31,8 +31,7 @@ public class ToolController {
     @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("{id}/availability")
     public ResponseEntity<Tool> updateToolAvailability(@PathVariable String id) {
-        toolService.updateAvailabilityToFalse( new ObjectId(id));
+        toolService.updateAvailabilityToFalse( id);
             return ResponseEntity.ok().build();
-
     }
 }
