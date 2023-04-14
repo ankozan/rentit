@@ -16,6 +16,22 @@ public class ToolController {
     @Autowired
     private ToolService toolService;
 
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/createTool")
+    public ResponseEntity<Tool> createTool(@RequestBody Map<String, String> request) {
+        String toolName = request.get("toolName");
+        String category = request.get("category");
+        String image = request.get("image");
+        double rentalPrice = Double.parseDouble(request.get("rentalPrice"));
+        String description = request.get("description");
+        String email = request.get("email");
+        String location = request.get("location");
+        Tool tool = new Tool(toolName,category,description,rentalPrice,image,email,location);
+        toolService.createTool(tool);
+        return new ResponseEntity<Tool>(tool, HttpStatus.CREATED);
+    }
+
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
     public ResponseEntity<List<Tool>> getAllTools(){
@@ -24,8 +40,14 @@ public class ToolController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("{id}")
-    public ResponseEntity<Optional<Tool>> getToolById(@PathVariable ObjectId id){
-        return new ResponseEntity<Optional<Tool>>(toolService.getToolById(id), HttpStatus.OK);
+    public ResponseEntity<Optional<Tool>> getToolById(@PathVariable String id){
+        return new ResponseEntity<Optional<Tool>>(toolService.getToolByToolId(id), HttpStatus.OK);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("{email}/history")
+    public ResponseEntity<List<Optional<Tool>>> getToolsByEmail(@PathVariable String email){
+        return new ResponseEntity<List<Optional<Tool>> >(toolService.getToolByEmail(email), HttpStatus.OK);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
@@ -34,4 +56,5 @@ public class ToolController {
         toolService.updateAvailabilityToFalse( id);
             return ResponseEntity.ok().build();
     }
+
 }

@@ -14,14 +14,21 @@ public class ToolService {
     @Autowired
     private ToolRepository toolRepository;
 
+    public void createTool(Tool tool) {
+        toolRepository.save(tool);
+    }
+
     public List<Tool> getAllTools() {
         return toolRepository.findAll();
     }
 
-    public Optional<Tool> getToolById(ObjectId id) {
-        return toolRepository.findById(id);
+    public Optional<Tool> getToolByToolId(String id) {
+        return toolRepository.findByToolId(id);
     }
 
+    public List<Optional<Tool>> getToolByEmail(String email) {
+        return toolRepository.findByEmail(email);
+    }
     public void updateAvailabilityToFalse(String toolId) {
         Optional<Tool> optionalTool = toolRepository.findByToolId(toolId);
         if (optionalTool.isPresent()) {

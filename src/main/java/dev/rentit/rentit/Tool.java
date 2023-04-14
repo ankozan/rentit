@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Document(collection = "tools")
 @Data
@@ -32,4 +33,16 @@ public class Tool {
     private String email;
     private String location;
 
+    public Tool(String toolName,String category, String description, double rentalPrice, String image,String email,String location){
+        tool_name = toolName;
+        this.category = category;
+        this.description = description;
+        this.rental_price = rentalPrice;
+        this.image = image;
+        available = true;
+        toolId = String.valueOf(new Random().nextInt(1000));
+        rating = "5.0";
+        this.email = email;
+        this.location = location;
+    }
 }
