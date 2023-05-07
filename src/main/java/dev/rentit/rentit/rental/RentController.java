@@ -1,4 +1,4 @@
-package dev.rentit.rentit;
+package dev.rentit.rentit.rental;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

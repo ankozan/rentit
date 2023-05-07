@@ -1,8 +1,6 @@
-package dev.rentit.rentit;
+package dev.rentit.rentit.tool;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package dev.rentit.rentit;
+package dev.rentit.rentit.rental;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
